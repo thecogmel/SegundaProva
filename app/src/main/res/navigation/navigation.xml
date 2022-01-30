@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.segundaprova.fragments.HomeFragment"
+        android:label="Home - Listagem">
+        <action
+            android:id="@+id/action_homeFragment_to_cadastraFragment"
+            app:destination="@id/cadastraFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_alteraFragment"
+            app:destination="@id/alteraFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_sobreFragment2"
+            app:destination="@id/sobreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastraFragment"
+        android:name="com.example.segundaprova.fragments.CadastraFragment"
+        android:label="Cadastro de Restaurantes"
+        tools:layout="@layout/fragment_cadastra" >
+        <action
+            android:id="@+id/action_cadastraFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/alteraFragment"
+        android:name="com.example.segundaprova.fragments.AlteraFragment"
+        android:label="Atualizar Elemento" >
+        <action
+            android:id="@+id/action_alteraFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="currentRestaurante"
+            app:argType="com.example.segundaprova.data.Restaurante" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.segundaprova.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="currentRestauranteDetail"
+            app:argType="com.example.segundaprova.data.Restaurante" />
+    </fragment>
+    <fragment
+        android:id="@+id/sobreFragment"
+        android:name="com.example.segundaprova.SobreFragment"
+        android:label="Sobre"
+        tools:layout="@layout/fragment_sobre" >
+        <action
+            android:id="@+id/action_sobreFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

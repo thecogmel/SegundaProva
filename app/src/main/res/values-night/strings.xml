@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hor_rio">Horário</string>
+    <string name="maximo_de_clientes">Maximo de Clientes</string>
+    <string name="cadastroTitle">Cadastro!</string>
+    <string name="n_de_funcionarios">N de funcionarios</string>
+    <string name="alterar">Alterar!</string>
+    <string name="id">id</string>
+    <string name="sobre">Sobre</string>
+    <string name="idadePerfil">26 Anos</string>
+    <string name="nomePerfil">Erick Medeiros</string>
+    <string name="descriptionPerfilPhoto">Foto de Perfil</string>
+    <string name="logo">Logo</string>
+</resources>
