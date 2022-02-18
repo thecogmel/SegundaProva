@@ -1,6 +1,7 @@
 package com.example.segundaprova.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
@@ -14,12 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.segundaprova.R
 import com.example.segundaprova.adapters.ListAdapter
 import com.example.segundaprova.adapters.MyRecyclerViewClickListener
+import com.example.segundaprova.data.RestauranteRemoteRepository
 import com.example.segundaprova.databinding.FragmentHomeBinding
+import com.example.segundaprova.viewmodels.MainViewModelFactory
+import com.example.segundaprova.viewmodels.RestauranteRemoteViewModel
 import com.example.segundaprova.viewmodels.RestaurantesViewModel
 
 class HomeFragment : Fragment() {
     lateinit var binding: FragmentHomeBinding
     private lateinit var restaurantesViewModel: RestaurantesViewModel
+    private lateinit var viewModelRemote: RestauranteRemoteViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +56,16 @@ class HomeFragment : Fragment() {
                     }
                 })
         )
+
+        //RestauranteRemoteViewModel
+        val repository = RestauranteRemoteRepository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModelRemote = ViewModelProvider(this, viewModelFactory).get(RestauranteRemoteViewModel::class.java)
+        viewModelRemote.getRestaurante()
+
+        viewModelRemote.myResponse.observe(viewLifecycleOwner, Observer { response ->
+            adapter.setData(response)
+        })
 
         restaurantesViewModel = ViewModelProvider(this).get(RestaurantesViewModel::class.java)
         restaurantesViewModel.readAllData.observe(viewLifecycleOwner, Observer { restaurante ->
