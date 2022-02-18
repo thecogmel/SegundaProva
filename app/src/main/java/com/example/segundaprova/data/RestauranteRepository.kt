@@ -10,6 +10,10 @@ class RestauranteRepository(private val restauranteDao: RestauranteDAO) {
         restauranteDao.inserir(restaurante)
     }
 
+    suspend fun addRestauranteoRemote (estado: List<Restaurante>){
+        restauranteDao.insertRemote(estado)
+    }
+
     suspend fun updateRestaurante(restaurante: Restaurante){
         restauranteDao.atualizar(restaurante)
     }

@@ -28,6 +28,12 @@ class RestaurantesViewModel(application: Application): AndroidViewModel(applicat
         }
     }
 
+    fun addEstadoRemote(estado: List<Restaurante>) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addRestauranteoRemote(estado)
+        }
+    }
+
     fun updateRestaurante(restaurante: Restaurante){
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateRestaurante(restaurante)

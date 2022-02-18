@@ -9,6 +9,10 @@ interface RestauranteDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun inserir(restaurante: Restaurante): Long
 
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertRemote(estado: List<Restaurante>)
+
     @Delete
     fun deletar(restaurante: Restaurante): Int
 
